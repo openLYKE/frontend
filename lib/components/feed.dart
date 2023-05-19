@@ -16,7 +16,7 @@ class Feed extends StatelessWidget {
             return Card(
                 margin: const EdgeInsets.all(8),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8.0),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -33,17 +33,21 @@ class Feed extends StatelessWidget {
                         ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),
                             child: const Image(
-                              image: NetworkImage("https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-                            )
-                        ),
+                                image: NetworkImage(
+                                    "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"))),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconButton(
                                 onPressed: null,
                                 icon: Icon(Icons.favorite_border)),
-                           IconButton(onPressed: null, icon: Icon(Icons.share)),
-                            IconButton(onPressed: null, icon: Icon(Icons.turned_in_not))
+                            ButtonBar(children: [
+                              IconButton(
+                                  onPressed: null, icon: Icon(Icons.share)),
+                              IconButton(
+                                  onPressed: null,
+                                  icon: Icon(Icons.turned_in_not))
+                            ])
                           ],
                         )
                       ]),
