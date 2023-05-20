@@ -1,5 +1,3 @@
-// Stateful widget to handle change on click of chips containing tags of posts
-
 import 'package:flutter/material.dart';
 
 class TagChips extends StatefulWidget {
