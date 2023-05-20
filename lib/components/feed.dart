@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/components/tag_chips.dart';
 
 class Feed extends StatelessWidget {
   const Feed({super.key});
@@ -20,7 +21,6 @@ class Feed extends StatelessWidget {
         body: ListView.builder(
           itemCount: 100,
           itemBuilder: (BuildContext context, int index) {
-            // A card which looks like twitter posts
             return Card(
                 margin: const EdgeInsets.all(8),
                 color: Colors.blue,
@@ -46,81 +46,113 @@ class Feed extends StatelessWidget {
                                       showModalBottomSheet<dynamic>(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    const ListTile(
-                                                      title: Text(
-                                                          "Why do I see this post?",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 20)),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                              top: 10,
-                                                              bottom: 0,
-                                                              left: 20,
-                                                              right: 20),
-                                                    ),
-                                                    const Divider(
-                                                      color: Colors.blue,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 20),
-                                                      child: (index % 2 == 0)
-                                                          ? const Text(
-                                                              "This post is shown to you because you are following the user who posted it. You can unfollow the user to stop seeing posts from them.")
-                                                          : const Column(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                  Text(
-                                                                    "The Algorithm",
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            16,
-                                                                        fontWeight:
-                                                                            FontWeight.bold),
-                                                                  ),
-                                                                  Text(
-                                                                      "1. The number of likes \n"
-                                                                      "2. The number of comments\n"
-                                                                      "3. The number of shares\n"
-                                                                      "4. The number of views\n"
-                                                                      "5. The number of reports\n"
-                                                                      "6. The number of times the post was hidden"),
-                                                                ]),
-                                                    ),
-                                                  ]));
-                                          /*return SizedBox(
-                                            height: 200,
-                                            child: Center(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: <Widget>[
-                                                  const Text(
-                                                      'Modal BottomSheet'),
-                                                  ElevatedButton(
-                                                    child: const Text(
-                                                        'Close BottomSheet'),
-                                                    onPressed: () =>
-                                                        Navigator.pop(context),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );*/
+                                          return SizedBox(
+                                              height: index % 2 == 0 ? 175 : 500,
+                                              child: ListView(
+                                              children: [
+                                                const ListTile(
+                                                  title: Text(
+                                                      "Why do I see this post?",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight
+                                                                  .bold,
+                                                          fontSize: 20)),
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          top: 10,
+                                                          bottom: 0,
+                                                          left: 20,
+                                                          right: 20),
+                                                ),
+                                                const Divider(
+                                                  color: Colors.blue,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 20),
+                                                  child: (index % 2 == 0)
+                                                      ? const Text(
+                                                          "This post is shown to you because you are following the user who posted it. You can unfollow the user to stop seeing posts from them.")
+                                                      : const Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                              Text(
+                                                                "The Algorithm",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        16,
+                                                                    fontWeight:
+                                                                        FontWeight.bold),
+                                                              ),
+                                                              Text(
+                                                                  "1. The number of likes \n"
+                                                                  "2. The number of comments\n"
+                                                                  "3. The number of shares\n"
+                                                                  "4. The number of views\n"
+                                                                  "5. The number of reports\n"
+                                                                  "6. The number of times the post was hidden"),
+                                                              Text(
+                                                                  "Tags of this post:",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight.bold)),
+                                                              TagChips(
+                                                                  tags: [
+                                                                    "#tags1",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2",
+                                                                    "#tags2"
+                                                                  ])
+                                                            ]),
+                                                ),
+                                              ]));
                                         },
                                       );
                                     },
