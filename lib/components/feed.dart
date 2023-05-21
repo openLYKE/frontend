@@ -236,7 +236,7 @@ class FeedState extends State<SliderExample> {
                             child: StackedBarChart(data: [
                               TagData(
                                   'Sports', 0.45, Colors.black),
-                              TagData('Celebritys', 0.3, Colors.red),
+                              TagData('Celebrities', 0.3, Colors.red),
                               TagData('Tech', 0.2, Colors.green),
                               TagData('Others', 0.05, Colors.lightBlue)
                             ]),
