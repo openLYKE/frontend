@@ -34,16 +34,16 @@ final feed1 = [
       "https://images.pexels.com/photos/16784239/pexels-photo-16784239/free-photo-of-fashion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Sports", "Lifestyle"],
       121,
-      ["Sports"],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   Post(
       "Kai",
       DateTime(2023, 5, 9, 18, 00, 00),
       "https://photos.desired.de/04/bf/cc/557bdefe66caf91343c2f3a897_ZmMgODU2ODQ0NzlmZmZmIDE2MDAgMTIwMAMwZjViZjZmM2MzOQ==_imago0115775955h.jpg",
       "https://www.ingame.de/bilder/2022/11/30/91947994/30402349-kai-pflaume-bei-den-elevator-boys-2uaMmeCHieec.jpg",
-      ["Lifestyle", "Beauty"],
+      ["Lifestyle","Beauty"],
       13833,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "POPULAR"),
   Post(
       "Robert",
@@ -52,16 +52,16 @@ final feed1 = [
       "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
       ["Tech"],
       52,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   Post(
       "Markus",
       DateTime(2023, 5, 20, 9, 00, 00),
       "https://images.pexels.com/photos/1407818/pexels-photo-1407818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      ["Sports", "Lifestyle"],
+      ["Sports","Lifestyle"],
       167,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   Post(
       "Havertz",
@@ -70,7 +70,7 @@ final feed1 = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
       ["Sports", "Celebrity"],
       21341,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "POPULAR"),
   Post(
       "Randy",
@@ -79,7 +79,7 @@ final feed1 = [
       "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Sports"],
       134,
-      ["Music"],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   null,
   Post(
@@ -89,29 +89,65 @@ final feed1 = [
       "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Landscapes", "Lifestyle"],
       2978,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "FRIENDS"),
   Post(
       "Marc",
       DateTime(2023, 5, 9, 18, 00, 00),
-      "https://i.ds.at/YTbGDg/rs:fill:750:0/plain/2021/10/28/Bildschirmfoto-2021-10-28-um-20.18.16.png",
+      "https://images.lmu.social/new/marc_big.png",
       "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
       ["Celebrity"],
       313446,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "POPULAR"),
 ];
 
 final feed2 = [
   Post(
-      "Marc",
+      "Markus",
+      DateTime(2023, 5, 20, 9, 00, 00),
+      "https://images.pexels.com/photos/1035108/pexels-photo-1035108.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Cars"],
+      167,
+      ["Cars", "Gaming"],
+      "TAGS"),
+  Post(
+      "Havertz",
       DateTime(2023, 5, 9, 18, 00, 00),
-      "https://i.ds.at/YTbGDg/rs:fill:750:0/plain/2021/10/28/Bildschirmfoto-2021-10-28-um-20.18.16.png",
-      "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
-      ["Celebrity"],
-      313446,
-      [""],
-      "POPULAR"),
+      "https://images.pexels.com/photos/7862657/pexels-photo-7862657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
+      ["Gaming", "Celebrity"],
+      21341,
+      ["Cars", "Gaming"],
+      "TAGS"),
+  Post(
+      "Robert",
+      DateTime(2023, 5, 20, 9, 00, 00),
+      "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
+      ["Cars"],
+      52,
+      ["Cars", "Gaming"],
+      "TAGS"),
+  Post(
+      "Randy",
+      DateTime(2023, 5, 10, 19, 30, 00),
+      "https://images.pexels.com/photos/1174746/pexels-photo-1174746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Gaming"],
+      134,
+      ["Cars", "Gaming"],
+      "TAGS"),
+  Post(
+      "Rosa",
+      DateTime(2023, 5, 9, 18, 00, 00),
+      "https://images.pexels.com/photos/3732652/pexels-photo-3732652.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Beauty", "Lifestyle"],
+      2978,
+      ["Cars", "Gaming"],
+      "RANDOM"),
 ];
 
 class FeedState extends State<SliderExample> {
@@ -120,12 +156,12 @@ class FeedState extends State<SliderExample> {
   Future<void> update() async {
     await Future.delayed(const Duration(seconds: 2));
 
+
     setState(() {
       feed = feed2;
     });
     return Future.delayed(const Duration(seconds: 0));
   }
-
   Widget getBottomSheetText(int index) {
     if (index % 2 == 0) {
       return const Text(
@@ -134,8 +170,13 @@ class FeedState extends State<SliderExample> {
     return const Text("The Algorithm");
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
+
+
     final colorMap = {
       "TAGS": const Color(0xFF00008B),
       "FRIENDS": Colors.orange,
@@ -196,8 +237,8 @@ class FeedState extends State<SliderExample> {
                           padding: const EdgeInsets.all(8.0),
                           child: StackedBarChart(data: [
                             TagData('Sports', 0.45, Colors.black),
-                            TagData('Tech', 0.3, Colors.red),
-                            TagData('Cars', 0.2, Colors.green),
+                            TagData('Celebrities', 0.3, Colors.red),
+                            TagData('Tech', 0.2, Colors.green),
                             TagData('Others', 0.05, Colors.lightBlue)
                           ]),
                         ),
@@ -219,12 +260,12 @@ class FeedState extends State<SliderExample> {
                             ElevatedButton.icon(
                               onPressed: () {},
                               icon: const Icon(Icons.block),
-                              label: const Text("Tech"),
+                              label: const Text("Celebrities"),
                             ),
                             ElevatedButton.icon(
                               onPressed: () {},
                               icon: const Icon(Icons.block),
-                              label: const Text("Cars"),
+                              label: const Text("Tech"),
                             ),
                           ],
                         ),

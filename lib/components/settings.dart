@@ -48,8 +48,8 @@ class SliderExample extends StatefulWidget {
 
 class SliderState extends State<SliderExample> {
   double _popularSliderValue = 2;
-  double _friendsLikesSliderValue = 2;
-  double _randomizationSliderValue = 2;
+  double _friendsLikesSliderValue = 1;
+  double _randomizationSliderValue = 0;
   double _tagsSliderValue = 2;
 
   double headingSize = 25;
@@ -99,11 +99,11 @@ class SliderState extends State<SliderExample> {
   List<Tag> list = [
     Tag("Beauty", 1),
     Tag("Cars", 0),
-    Tag("Celebrity", 1),
+    Tag("Celebrity", 2),
     Tag("Climate", 0),
-    Tag("Dancing", 1),
+    Tag("Dancing", 0),
     Tag("Fashion", 1),
-    Tag("Funny", 0),
+    Tag("Funny", 1),
     Tag("Gaming", 1),
     Tag("Landscapes", 1),
     Tag("Lifestyle", 1),
@@ -111,8 +111,9 @@ class SliderState extends State<SliderExample> {
     Tag("Pop", 1),
     Tag("Sports", 2),
     Tag("Star Wars", 1),
-    Tag("Tech", 1),
+    Tag("Tech", 2),
   ];
+
 
   // List<Color> backgroundColor = [Colors.orange, const Color(0xFFff841f), const Color(0xFFff6f32), const Color(0xFFff5944), const Color(0xFFff4255), const Color(0xFFff2a65), const Color(0xFFf60e76), const Color(0xFFe70087), const Color(0xFFd30096), const Color(0xFFba16a4), Colors.purple];
 
