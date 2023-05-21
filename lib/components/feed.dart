@@ -94,7 +94,7 @@ final feed1 = [
   Post(
       "Marc",
       DateTime(2023, 5, 9, 18, 00, 00),
-      "https://i.ds.at/YTbGDg/rs:fill:750:0/plain/2021/10/28/Bildschirmfoto-2021-10-28-um-20.18.16.png",
+      "https://images.lmu.social/new/marc_big.png",
       "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
       ["Celebrity"],
       313446,
