@@ -102,15 +102,53 @@ final feed1 = [
       "POPULAR"),
 ];
 
-final feed2 = [Post(
-    "Marc",
-    DateTime(2023, 5, 9, 18, 00, 00),
-    "https://i.ds.at/YTbGDg/rs:fill:750:0/plain/2021/10/28/Bildschirmfoto-2021-10-28-um-20.18.16.png",
-    "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
-    ["Celebrity"],
-    313446,
-    [""],
-    "POPULAR"),];
+final feed2 = [
+  Post(
+      "Markus",
+      DateTime(2023, 5, 20, 9, 00, 00),
+      "https://images.pexels.com/photos/1035108/pexels-photo-1035108.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Cars"],
+      167,
+      [""],
+      "TAGS"),
+  Post(
+      "Havertz",
+      DateTime(2023, 5, 9, 18, 00, 00),
+      "https://images.pexels.com/photos/7862657/pexels-photo-7862657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
+      ["Gaming", "Celebrity"],
+      21341,
+      [""],
+      "POPULAR"),
+  Post(
+      "Robert",
+      DateTime(2023, 5, 20, 9, 00, 00),
+      "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
+      ["Cars"],
+      52,
+      [""],
+      "TAGS"),
+  Post(
+      "Randy",
+      DateTime(2023, 5, 10, 19, 30, 00),
+      "https://images.pexels.com/photos/1174746/pexels-photo-1174746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Gaming"],
+      134,
+      ["Music"],
+      "TAGS"),
+  Post(
+      "Rosa",
+      DateTime(2023, 5, 9, 18, 00, 00),
+      "https://images.pexels.com/photos/3732652/pexels-photo-3732652.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Beauty", "Lifestyle"],
+      2978,
+      [""],
+      "FRIENDS"),
+];
 
 class FeedState extends State<SliderExample> {
   List<Post?> feed = feed1;
@@ -198,8 +236,8 @@ class FeedState extends State<SliderExample> {
                             child: StackedBarChart(data: [
                               TagData(
                                   'Sports', 0.45, Colors.black),
-                              TagData('Tech', 0.3, Colors.red),
-                              TagData('Cars', 0.2, Colors.green),
+                              TagData('Celebritys', 0.3, Colors.red),
+                              TagData('Tech', 0.2, Colors.green),
                               TagData('Others', 0.05, Colors.lightBlue)
                             ]),
                           ),
@@ -221,12 +259,12 @@ class FeedState extends State<SliderExample> {
                               ElevatedButton.icon(
                                 onPressed: () {},
                                 icon: const Icon(Icons.block),
-                                label: const Text("Tech"),
+                                label: const Text("Celebritys"),
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {},
                                 icon: const Icon(Icons.block),
-                                label: const Text("Cars"),
+                                label: const Text("Tech"),
                               ),
                             ],
                           ),
