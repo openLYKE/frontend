@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/components/settings.dart';
 import 'package:frontend/components/stacked_bar_chart.dart';
 import 'package:frontend/components/tag_chips.dart';
+import 'package:intl/intl.dart';
 
 class Feed extends StatelessWidget {
   const Feed({super.key});
@@ -14,42 +15,177 @@ class Feed extends StatelessWidget {
     return const Text("The Algorithm");
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
+    final feed = [
+      Post(
+          "Mathilde",
+          DateTime(2023, 5, 21, 10, 00, 00),
+          "https://images.pexels.com/photos/1325654/pexels-photo-1325654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/16784239/pexels-photo-16784239/free-photo-of-fashion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Sports", "Lifestyle"],
+          121,
+          ["Cars"],
+          "TAGS"),
+      Post(
+          "Kai",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://photos.desired.de/04/bf/cc/557bdefe66caf91343c2f3a897_ZmMgODU2ODQ0NzlmZmZmIDE2MDAgMTIwMAMwZjViZjZmM2MzOQ==_imago0115775955h.jpg",
+          "https://www.ingame.de/bilder/2022/11/30/91947994/30402349-kai-pflaume-bei-den-elevator-boys-2uaMmeCHieec.jpg",
+          ["Lifestyle","Beauty"],
+          13833,
+          [""],
+          "POPULAR"),
+      Post(
+          "Robert",
+          DateTime(2023, 5, 20, 9, 00, 00),
+          "https://images.pexels.com/photos/1432675/pexels-photo-1432675.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
+          ["Tech"],
+          52,
+          [""],
+          "TAGS"),
+      Post(
+          "Markus",
+          DateTime(2023, 5, 20, 9, 00, 00),
+          "https://images.pexels.com/photos/1407818/pexels-photo-1407818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Sports","Lifestyle"],
+          167,
+          [""],
+          "TAGS"),
+      Post(
+          "Havertz",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1447x353:1449x351)/origin-imgresizer.eurosport.com/2023/04/25/3692060-75131128-2560-1440.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
+          ["Sports", "Celebrity"],
+          21341,
+          [""],
+          "POPULAR"),
+      Post(
+          "Randy",
+          DateTime(2023, 5, 10, 19, 30, 00),
+          "https://images.pexels.com/photos/3772226/pexels-photo-3772226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Sports"],
+          134,
+          ["Music"],
+          "TAGS"),
+      null,
+      Post(
+          "Rosa",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Landscapes", "Lifestyle"],
+          2978,
+          [""],
+          "FRIENDS"),
+      Post(
+          "Marc",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://i.ds.at/YTbGDg/rs:fill:750:0/plain/2021/10/28/Bildschirmfoto-2021-10-28-um-20.18.16.png",
+          "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
+          ["Celebrity"],
+          313446,
+          [""],
+          "POPULAR"),
+    ];
+
+    final colorMap = {
+      "TAGS": const Color(0xFF00008B),
+      "FRIENDS": Colors.orange,
+      "POPULAR": Colors.purple,
+      "RANDOM": Colors.red,
+    };
+
+    final recommendationDescription = {
+      "TAGS":
+          "This Post was chosen because it has some tags which correspond with your tags",
+      "FRIENDS": "This post was chosen, because one of your friends liked it",
+      "POPULAR": "This Post was chosen because it has a lot of likes in our community.",
+      "RANDOM": "This Post was randomly chosen from all possible posts"
+    };
+
+    final format = DateFormat('hh:mm dd-MM-yyyy');
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Feed'),
           actions: [
-            IconButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
-            }, icon: const Icon(Icons.settings))
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Settings()));
+                },
+                icon: const Icon(Icons.settings))
           ],
         ),
         body: ListView.builder(
-          itemCount: 100,
+          itemCount: feed.length,
           itemBuilder: (BuildContext context, int index) {
-            return
-              (index == 3)
-                ?
-              Container(
-                  height: 200,
-                  width: 200,
-                  child: Card(
-                    child: StackedBarChart(data: [
-                      TagData('Technologie', 0.5,
-                          Colors.black),
-                      TagData('tag', 0.3,
-                          Colors.red),
-                      TagData('Technologie', 0.2,
-                          Colors.green),
-                    ]),
-                  )
-              )
-
-
+            return (feed[index] == null)
+                ? SizedBox(
+                    height: 280,
+                    width: 200,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+                        child: Column(
+                          children: [
+                            const Text("Most viewed tags:",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: StackedBarChart(data: [
+                                TagData(
+                                    'Sports', 0.45, Colors.black),
+                                TagData('Tech', 0.3, Colors.red),
+                                TagData('Cars', 0.2, Colors.green),
+                                TagData('Others', 0.05, Colors.lightBlue)
+                              ]),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: 8),
+                              child: Text(
+                                  "You have consumed a lot of content from the following tags. Blacklist them to see less of them in your feed."),
+                            ),
+                            Wrap(
+                              runSpacing: 3,
+                              spacing: 8,
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.block),
+                                  label: const Text("Sports"),
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.block),
+                                  label: const Text("Tech"),
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.block),
+                                  label: const Text("Cars"),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ))
                 : Card(
                     margin: const EdgeInsets.all(8),
-                    color: Colors.blue,
+                    color: colorMap[feed[index]!.recommendedReason],
                     child: Column(children: [
                       Card(
                           margin: const EdgeInsets.only(top: 6),
@@ -61,20 +197,25 @@ class Feed extends StatelessWidget {
                                 children: [
                                   ListTile(
                                     contentPadding: const EdgeInsets.all(0),
-                                    leading: const Icon(
-                                      Icons.account_circle_rounded,
-                                      size: 48.0,
+                                    leading: CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          (feed[index]!.profileImageUrl)
+                                              .toString()),
                                     ),
-                                    title: const Text("User"),
-                                    subtitle: const Text("Date"),
+                                    title: Text(feed[index]!.username),
+                                    subtitle: Text(format
+                                        .format(feed[index]!.date)
+                                        .toString()),
                                     trailing: IconButton(
                                         onPressed: () {
                                           showModalBottomSheet<dynamic>(
                                             context: context,
                                             builder: (BuildContext context) {
                                               return SizedBox(
-                                                  height: index % 2 == 0
-                                                      ? 175
+                                                  height: feed[index]!
+                                                              .recommendedReason !=
+                                                          "TAGS"
+                                                      ? 150
                                                       : 500,
                                                   child: ListView(children: [
                                                     const ListTile(
@@ -92,16 +233,20 @@ class Feed extends StatelessWidget {
                                                               left: 20,
                                                               right: 20),
                                                     ),
-                                                    const Divider(
-                                                      color: Colors.blue,
+                                                    Divider(
+                                                      color: colorMap[feed[index]!.recommendedReason],
+                                                      thickness: 3,
                                                     ),
                                                     Padding(
                                                       padding: const EdgeInsets
                                                               .symmetric(
                                                           horizontal: 20),
-                                                      child: (index % 2 == 0)
-                                                          ? const Text(
-                                                              "This post is shown to you because you are following the user who posted it. You can unfollow the user to stop seeing posts from them.")
+                                                      child: feed[index]!
+                                                                  .recommendedReason !=
+                                                              "TAGS"
+                                                          ? Text(recommendationDescription[
+                                                              feed[index]!
+                                                                  .recommendedReason]!, style: TextStyle(fontSize: 16))
                                                           : const Column(
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
@@ -189,23 +334,23 @@ class Feed extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Image(
                                           image: NetworkImage(
-                                              'https://images.lmu.social/${(index + 1) % 50}.jpg'))),
-                                  const Row(
+                                              feed[index]!.imageURl))),
+                                  Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Row(
                                         children: [
-                                          IconButton(
+                                          const IconButton(
                                               onPressed: null,
                                               icon:
                                                   Icon(Icons.favorite_border)),
                                           Text(
-                                            "0",
+                                            feed[index]!.likes.toString()
                                           ),
                                         ],
                                       ),
-                                      ButtonBar(children: [
+                                      const ButtonBar(children: [
                                         IconButton(
                                             onPressed: null,
                                             icon: Icon(Icons.share)),
@@ -218,7 +363,21 @@ class Feed extends StatelessWidget {
                                 ]),
                           ))
                     ]));
-            },
+          },
         ));
   }
+}
+
+class Post {
+  String username;
+  DateTime date;
+  String imageURl;
+  String profileImageUrl;
+  List<String> postTags;
+  int likes;
+  List<String> userTags;
+  String recommendedReason;
+
+  Post(this.username, this.date, this.imageURl, this.profileImageUrl,
+      this.postTags, this.likes, this.userTags, this.recommendedReason);
 }
