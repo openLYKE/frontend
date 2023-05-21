@@ -113,6 +113,15 @@ final feed2 = [
       ["Cars", "Gaming"],
       "TAGS"),
   Post(
+      "Rosa",
+      DateTime(2023, 5, 9, 18, 00, 00),
+      "https://images.pexels.com/photos/3732652/pexels-photo-3732652.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      ["Beauty", "Lifestyle"],
+      2978,
+      ["Cars", "Gaming"],
+      "RANDOM"),
+  Post(
       "Havertz",
       DateTime(2023, 5, 9, 18, 00, 00),
       "https://images.pexels.com/photos/7862657/pexels-photo-7862657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -139,15 +148,7 @@ final feed2 = [
       134,
       ["Cars", "Gaming"],
       "TAGS"),
-  Post(
-      "Rosa",
-      DateTime(2023, 5, 9, 18, 00, 00),
-      "https://images.pexels.com/photos/3732652/pexels-photo-3732652.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      ["Beauty", "Lifestyle"],
-      2978,
-      ["Cars", "Gaming"],
-      "RANDOM"),
+
 ];
 
 class FeedState extends State<SliderExample> {
