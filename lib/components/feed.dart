@@ -15,18 +15,85 @@ class Feed extends StatelessWidget {
     return const Text("The Algorithm");
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     final feed = [
-      Post("Mathilde", DateTime(2023, 5, 21, 10, 00, 00), "1",
-          ["Cars", "Tech", "Climate"], 13, ["Cars"], "TAGS"),
-      Post("Markus", DateTime(2023, 5, 20, 9, 00, 00), "2", ["Lifestyle"], 6,
-          [""], "FRIENDS"),
-      Post("Randy", DateTime(2023, 5, 10, 19, 30, 00), "3", ["Music", "Pop"],
-          134, ["Music"], "POPULAR"),
+      Post(
+          "Mathilde",
+          DateTime(2023, 5, 21, 10, 00, 00),
+          "https://images.pexels.com/photos/1325654/pexels-photo-1325654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/16784239/pexels-photo-16784239/free-photo-of-fashion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Sports", "Lifestyle"],
+          121,
+          ["Cars"],
+          "TAGS"),
+      Post(
+          "Kai",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://photos.desired.de/04/bf/cc/557bdefe66caf91343c2f3a897_ZmMgODU2ODQ0NzlmZmZmIDE2MDAgMTIwMAMwZjViZjZmM2MzOQ==_imago0115775955h.jpg",
+          "https://www.ingame.de/bilder/2022/11/30/91947994/30402349-kai-pflaume-bei-den-elevator-boys-2uaMmeCHieec.jpg",
+          ["Lifestyle","Beauty"],
+          13833,
+          [""],
+          "POPULAR"),
+      Post(
+          "Robert",
+          DateTime(2023, 5, 20, 9, 00, 00),
+          "https://images.pexels.com/photos/1432675/pexels-photo-1432675.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
+          ["Tech"],
+          52,
+          [""],
+          "TAGS"),
+      Post(
+          "Markus",
+          DateTime(2023, 5, 20, 9, 00, 00),
+          "https://images.pexels.com/photos/1407818/pexels-photo-1407818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Sports","Lifestyle"],
+          167,
+          [""],
+          "TAGS"),
+      Post(
+          "Havertz",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1447x353:1449x351)/origin-imgresizer.eurosport.com/2023/04/25/3692060-75131128-2560-1440.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
+          ["Sports", "Celebrity"],
+          21341,
+          [""],
+          "POPULAR"),
+      Post(
+          "Randy",
+          DateTime(2023, 5, 10, 19, 30, 00),
+          "https://images.pexels.com/photos/3772226/pexels-photo-3772226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Sports"],
+          134,
+          ["Music"],
+          "TAGS"),
       null,
-      Post("Rosa", DateTime(2023, 5, 9, 18, 00, 00), "4", ["Beauty", "Fashion"],
-          1372, [""], "RANDOM"),
+      Post(
+          "Rosa",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          ["Landscapes", "Lifestyle"],
+          2978,
+          [""],
+          "FRIENDS"),
+      Post(
+          "Marc",
+          DateTime(2023, 5, 9, 18, 00, 00),
+          "https://i.ds.at/YTbGDg/rs:fill:750:0/plain/2021/10/28/Bildschirmfoto-2021-10-28-um-20.18.16.png",
+          "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
+          ["Celebrity"],
+          313446,
+          [""],
+          "POPULAR"),
     ];
 
     final colorMap = {
@@ -130,9 +197,10 @@ class Feed extends StatelessWidget {
                                 children: [
                                   ListTile(
                                     contentPadding: const EdgeInsets.all(0),
-                                    leading: const Icon(
-                                      Icons.account_circle_rounded,
-                                      size: 48.0,
+                                    leading: CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          (feed[index]!.profileImageUrl)
+                                              .toString()),
                                     ),
                                     title: Text(feed[index]!.username),
                                     subtitle: Text(format
@@ -266,7 +334,7 @@ class Feed extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Image(
                                           image: NetworkImage(
-                                              'https://images.lmu.social/${(index + 1) % 50}.jpg'))),
+                                              feed[index]!.imageURl))),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -304,11 +372,12 @@ class Post {
   String username;
   DateTime date;
   String imageURl;
+  String profileImageUrl;
   List<String> postTags;
   int likes;
   List<String> userTags;
   String recommendedReason;
 
-  Post(this.username, this.date, this.imageURl, this.postTags, this.likes,
-      this.userTags, this.recommendedReason);
+  Post(this.username, this.date, this.imageURl, this.profileImageUrl,
+      this.postTags, this.likes, this.userTags, this.recommendedReason);
 }
