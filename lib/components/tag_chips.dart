@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TagChips extends StatefulWidget {
-  const TagChips({Key? key, required this.tags}) : super(key: key);
+  const TagChips({Key? key, required this.alltags, required this.selectedTags}) : super(key: key);
 
-  final List<String> tags;
+  final List<String> alltags;
+  final List<String> selectedTags;
 
   @override
   State<TagChips> createState() => _TagChipsState();
@@ -15,10 +16,11 @@ class _TagChipsState extends State<TagChips> {
 
   @override
   Widget build(BuildContext context) {
+    selectedTags = widget.selectedTags;
     return Wrap(
       spacing: 6.0,
       runSpacing: 6.0,
-      children: widget.tags.map((String tag) {
+      children: widget.alltags.map((String tag) {
         return ActionChip(
           label: Text(tag),
           shape: const RoundedRectangleBorder(
@@ -26,10 +28,10 @@ class _TagChipsState extends State<TagChips> {
 
           ),
           backgroundColor: selectedTags.contains(tag)
-              ? const Color(0xC0ABFF93)
+              ? const Color(0x804caf50)
               : blockedTags.contains(tag)
-                  ? const Color(0xC0FF9393)
-                  : const Color(0x90AFAFAF),
+                  ? const Color(0x80f44336)
+                  : const Color(0x4003a9f4),
           avatar: selectedTags.contains(tag)
               ? const Icon(Icons.check, color: Colors.green)
               : blockedTags.contains(tag)
