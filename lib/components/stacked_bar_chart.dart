@@ -7,7 +7,7 @@ class StackedBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double maxWidth = MediaQuery.of(context).size.width - 36;
+    double maxWidth = MediaQuery.of(context).size.width - 70;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
