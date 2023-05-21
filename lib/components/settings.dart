@@ -111,7 +111,7 @@ class SliderState extends State<SliderExample> {
     Tag("Pop", 1),
     Tag("Sports", 2),
     Tag("Star Wars", 1),
-    Tag("Tech", 1),
+    Tag("Tech", 2),
   ];
 
 
