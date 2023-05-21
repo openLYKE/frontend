@@ -97,14 +97,21 @@ class SliderState extends State<SliderExample> {
   List<PreferenceTag> preferenceTags = [];
 
   List<Tag> list = [
-    Tag("Tag1", 0),
-    Tag("Tag1", 1),
-    Tag("Tag1a", 1),
-    Tag("Tag1asfda", 1),
-    Tag("Tag1112", 2),
-    Tag("Tag112", 1),
-    Tag("Tag1123123", 1),
-    Tag("ThisIsALongTag", 2),
+    Tag("Beauty", 1),
+    Tag("Cars", 0),
+    Tag("Climate", 0),
+    Tag("Dancing", 1),
+    Tag("Fashion", 1),
+    Tag("Funny", 0),
+    Tag("Gaming", 1),
+    Tag("Landscapes", 1),
+    Tag("Lifestyle", 1),
+    Tag("Music", 1),
+    Tag("Pop", 1),
+    Tag("Sports", 2),
+    Tag("Star Wars", 1),
+    Tag("Tech", 1),
+    Tag("Celebrity", 1)
   ];
 
   // List<Color> backgroundColor = [Colors.orange, const Color(0xFFff841f), const Color(0xFFff6f32), const Color(0xFFff5944), const Color(0xFFff4255), const Color(0xFFff2a65), const Color(0xFFf60e76), const Color(0xFFe70087), const Color(0xFFd30096), const Color(0xFFba16a4), Colors.purple];
@@ -139,13 +146,30 @@ class SliderState extends State<SliderExample> {
     }
   }
 
+  Future<void> changeData() async {
+    await Future.delayed(const Duration(seconds: 1));
+    /*setState(() {
+      _popularSliderValue = 4;
+    });*/
+    return Future.delayed(
+        const Duration(seconds: 0),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Settings'),
         ),
-        body: ListView(children: [
+        body: RefreshIndicator(
+          onRefresh: changeData,
+          child: buildListView(),
+        ));
+  }
+
+  ListView buildListView() {
+    return ListView(children: [
           Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
           Align(
             alignment: Alignment.center,
@@ -177,7 +201,7 @@ class SliderState extends State<SliderExample> {
                       "Random": _randomizationSliderValue,
                       "Tags": _tagsSliderValue,
                     },
-              animationDuration: const Duration(seconds: 2),
+              animationDuration: const Duration(milliseconds: 1500),
               colorList: [Colors.purple, Colors.orange, Colors.red, darkBlue],
               chartValuesOptions: const ChartValuesOptions(
                 showChartValuesInPercentage: true,
@@ -513,6 +537,6 @@ class SliderState extends State<SliderExample> {
                   ]),
               ])),
           const Padding(padding: EdgeInsets.only(bottom: 40)),
-        ]));
+        ]);
   }
 }
