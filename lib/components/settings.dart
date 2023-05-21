@@ -33,9 +33,11 @@ class PreferenceTag {
   PreferenceTag(this.name, this.preference);
 }
 
-
-
-const List<Color> selectedColor = [Color(0x80f44336), Color(0x4003a9f4) , Color(0x804caf50),];
+const List<Color> selectedColor = [
+  Color(0x80f44336),
+  Color(0x4003a9f4),
+  Color(0x804caf50),
+];
 
 class SliderExample extends StatefulWidget {
   const SliderExample({super.key});
@@ -60,14 +62,10 @@ class SliderState extends State<SliderExample> {
   final double _tableFontSize = 20;
   final Color _tableFontColor = Colors.black54;
 
-
-
   // Colors:
   Color textColor = Colors.black54;
   Color sliderDescriptionColor = Colors.black45;
   final Color darkBlue = const Color(0xFF00008B);
-
-
 
   getPreference(int preference) {
     switch (preference) {
@@ -146,215 +144,212 @@ class SliderState extends State<SliderExample> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Settings'),
-          leading: BackButton(
-            color: Colors.black,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-              ),
-              ),
-              body: ListView(children: [
-              Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
-              Align(
-              alignment: Alignment.center,
-              child: Text(
+        ),
+        body: ListView(children: [
+          Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
               "Your current feed distribution",
-              style: TextStyle(fontSize: headingSize,
-              fontWeight: FontWeight.bold),
-              ),
-              ),
-              const Padding(padding: EdgeInsets.only(bottom: 30),),
-              Padding(
-              padding: EdgeInsets.only(left: paddingSides, right:paddingSides),
-              child: PieChart(dataMap:
-              _popularSliderValue == 0 && _friendsLikesSliderValue == 0 && _randomizationSliderValue == 0 && _tagsSliderValue == 0 ?
-              {
-              "Popular/Viral": 1,
-              "Friends": 1,
-              "Random": 0,
-              "Tags": 1,
-              }
-                  :
-              {
-              "Popular/Viral": _popularSliderValue,
-              "Friends": _friendsLikesSliderValue,
-              "Random": _randomizationSliderValue,
-              "Tags": _tagsSliderValue,
-              },
+              style:
+                  TextStyle(fontSize: headingSize, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 30),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: paddingSides, right: paddingSides),
+            child: PieChart(
+              dataMap: _popularSliderValue == 0 &&
+                      _friendsLikesSliderValue == 0 &&
+                      _randomizationSliderValue == 0 &&
+                      _tagsSliderValue == 0
+                  ? {
+                      "Popular/Viral": 1,
+                      "Friends": 1,
+                      "Random": 0,
+                      "Tags": 1,
+                    }
+                  : {
+                      "Popular/Viral": _popularSliderValue,
+                      "Friends": _friendsLikesSliderValue,
+                      "Random": _randomizationSliderValue,
+                      "Tags": _tagsSliderValue,
+                    },
               animationDuration: const Duration(seconds: 2),
               colorList: [Colors.purple, Colors.orange, Colors.red, darkBlue],
               chartValuesOptions: const ChartValuesOptions(
-              showChartValuesInPercentage: true,
-              decimalPlaces: 0,
+                showChartValuesInPercentage: true,
+                decimalPlaces: 0,
               ),
-              ),
-              ),
-              const Padding(padding: EdgeInsets.only(bottom: 30)),
-              const Divider(),
-              const Padding(padding: EdgeInsets.only(bottom: 30)),
-              Align(
-              alignment: Alignment.center,
-              child: Text(
+            ),
+          ),
+          const Padding(padding: EdgeInsets.only(bottom: 30)),
+          const Divider(),
+          const Padding(padding: EdgeInsets.only(bottom: 30)),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
               "Popular/Viral Posts",
-              style: TextStyle(fontSize: headingSize,
-              fontWeight: FontWeight.bold),
-              ),
-              ),
-              Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
-              Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
+              style:
+                  TextStyle(fontSize: headingSize, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
               padding: EdgeInsets.only(left: paddingSides),
               child: Text("How important are popular/viral posts for you?",
-              style: TextStyle(
-              fontSize: descriptionSize,
-              color: textColor,
-              )),
-              ),
-              ),
-              Slider(
-              activeColor: Colors.purple,
-              value: _popularSliderValue,
-              max: 4,
-              divisions: 4,
-              label: labelSwitch(_popularSliderValue.toInt()),
-              onChanged: (double value) {
+                  style: TextStyle(
+                    fontSize: descriptionSize,
+                    color: textColor,
+                  )),
+            ),
+          ),
+          Slider(
+            activeColor: Colors.purple,
+            value: _popularSliderValue,
+            max: 4,
+            divisions: 4,
+            label: labelSwitch(_popularSliderValue.toInt()),
+            onChanged: (double value) {
               setState(() {
-              _popularSliderValue = value;
+                _popularSliderValue = value;
               });
-              },
-              ),
-              Row(children: [
-              Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-              padding: EdgeInsets.only(left: paddingSides),
-              child: Text(
-              "Insignificant",
-              style: TextStyle(
-              fontSize: sliderDescriptionSize,
-              color: sliderDescriptionColor,
-              ),
-              ),
-              )),
-              const Spacer(),
-              Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-              padding: EdgeInsets.only(right: paddingSides),
-              child: Text(
-              "Essential",
-              style: TextStyle(
-              fontSize: sliderDescriptionSize,
-              color: sliderDescriptionColor,
-              ),
-              ),
-              )),
-              ]),
-              Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
-              const Divider(),
-              Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
-              Align(
-              alignment: Alignment.center,
-              child: Text(
+            },
+          ),
+          Row(children: [
+            Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: paddingSides),
+                  child: Text(
+                    "Insignificant",
+                    style: TextStyle(
+                      fontSize: sliderDescriptionSize,
+                      color: sliderDescriptionColor,
+                    ),
+                  ),
+                )),
+            const Spacer(),
+            Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: paddingSides),
+                  child: Text(
+                    "Essential",
+                    style: TextStyle(
+                      fontSize: sliderDescriptionSize,
+                      color: sliderDescriptionColor,
+                    ),
+                  ),
+                )),
+          ]),
+          Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
+          const Divider(),
+          Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
               "Friends Likes",
-              style: TextStyle(fontSize: headingSize,
-              fontWeight: FontWeight.bold),
-              ),
-              ),
-              Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
-              Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
+              style:
+                  TextStyle(fontSize: headingSize, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
               padding: EdgeInsets.only(left: paddingSides),
               child:
-              Text("How important are the likes of your friends for you?",
-              style: TextStyle(
-              fontSize: descriptionSize,
-              color: textColor,
-              )),
-              ),
-              ),
-              Slider(
-              activeColor: Colors.orange,
-              value: _friendsLikesSliderValue,
-              max: 4,
-              divisions: 4,
-              label: labelSwitch(_friendsLikesSliderValue.toInt()),
-              onChanged: (double value) {
+                  Text("How important are the likes of your friends for you?",
+                      style: TextStyle(
+                        fontSize: descriptionSize,
+                        color: textColor,
+                      )),
+            ),
+          ),
+          Slider(
+            activeColor: Colors.orange,
+            value: _friendsLikesSliderValue,
+            max: 4,
+            divisions: 4,
+            label: labelSwitch(_friendsLikesSliderValue.toInt()),
+            onChanged: (double value) {
               setState(() {
-              _friendsLikesSliderValue = value;
+                _friendsLikesSliderValue = value;
               });
-              },
-              ),
-              Row(children: [
-              Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-              padding: EdgeInsets.only(left: paddingSides),
-              child: Text(
-              "Insignificant",
-              style: TextStyle(
-              fontSize: sliderDescriptionSize,
-              color: sliderDescriptionColor,
-              ),
-              ),
-              )),
-              const Spacer(),
-              Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-              padding: EdgeInsets.only(right: paddingSides),
-              child: Text(
-              "Essential",
-              style: TextStyle(
-              fontSize: sliderDescriptionSize,
-              color: sliderDescriptionColor,
-              ),
-              ),
-              )),
-              ]),
-              Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
-              const Divider(),
-              Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
-              Align(
-              alignment: Alignment.center,
-              child: Text(
+            },
+          ),
+          Row(children: [
+            Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: paddingSides),
+                  child: Text(
+                    "Insignificant",
+                    style: TextStyle(
+                      fontSize: sliderDescriptionSize,
+                      color: sliderDescriptionColor,
+                    ),
+                  ),
+                )),
+            const Spacer(),
+            Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: paddingSides),
+                  child: Text(
+                    "Essential",
+                    style: TextStyle(
+                      fontSize: sliderDescriptionSize,
+                      color: sliderDescriptionColor,
+                    ),
+                  ),
+                )),
+          ]),
+          Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
+          const Divider(),
+          Padding(padding: EdgeInsets.only(bottom: paddingBottom)),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
               "Randomization",
-              style: TextStyle(fontSize: headingSize,
-              fontWeight: FontWeight.bold),
-              ),
-              ),
-              Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
-              Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
+              style:
+                  TextStyle(fontSize: headingSize, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
               padding: EdgeInsets.only(left: paddingSides),
               child: Text(
-              "How high should the percentage of completely random posts be?",
-              style: TextStyle(
-              fontSize: descriptionSize,
-              color: textColor,
-              )),
-              ),
-              ),
-              Slider(
-              activeColor: Colors.red,
-              value: _randomizationSliderValue,
-              max: 4,
-              divisions: 4,
-              label: labelLowHighSwitch(_randomizationSliderValue),
-              onChanged: (double value) {
+                  "How high should the percentage of completely random posts be?",
+                  style: TextStyle(
+                    fontSize: descriptionSize,
+                    color: textColor,
+                  )),
+            ),
+          ),
+          Slider(
+            activeColor: Colors.red,
+            value: _randomizationSliderValue,
+            max: 4,
+            divisions: 4,
+            label: labelLowHighSwitch(_randomizationSliderValue),
+            onChanged: (double value) {
               setState(() {
-              _randomizationSliderValue = value;
+                _randomizationSliderValue = value;
               });
-              },
-              ),
-              Row(children: [
-              Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-
+            },
+          ),
+          Row(children: [
+            Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
                   padding: EdgeInsets.only(left: paddingSides),
                   child: Text(
                     "None",
@@ -385,8 +380,8 @@ class SliderState extends State<SliderExample> {
             alignment: Alignment.center,
             child: Text(
               "Tags",
-              style: TextStyle(fontSize: headingSize,
-                  fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(fontSize: headingSize, fontWeight: FontWeight.bold),
             ),
           ),
           Padding(padding: EdgeInsets.only(bottom: paddingHeading)),
@@ -441,24 +436,15 @@ class SliderState extends State<SliderExample> {
                   ),
                 )),
           ]),
-
-
-
-
-
-
           const Padding(padding: EdgeInsets.only(bottom: 50)),
-
           Align(
             alignment: Alignment.center,
             child: Text(
               "Your personal Tag preferences",
               style: TextStyle(
-                fontSize: headingSize-2,
-              fontWeight: FontWeight.bold),
+                  fontSize: headingSize - 2, fontWeight: FontWeight.bold),
             ),
           ),
-
           const Padding(padding: EdgeInsets.only(bottom: 10)),
           Padding(
               padding: EdgeInsets.only(left: paddingSides, right: paddingSides),
