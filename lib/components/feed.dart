@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/components/settings.dart';
 import 'package:frontend/components/stacked_bar_chart.dart';
 import 'package:frontend/components/tag_chips.dart';
 
@@ -18,6 +19,11 @@ class Feed extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Feed'),
+          actions: [
+            IconButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Settings()));
+            }, icon: const Icon(Icons.settings))
+          ],
         ),
         body: ListView.builder(
           itemCount: 100,
