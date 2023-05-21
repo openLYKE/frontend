@@ -34,7 +34,7 @@ final feed1 = [
       "https://images.pexels.com/photos/16784239/pexels-photo-16784239/free-photo-of-fashion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Sports", "Lifestyle"],
       121,
-      ["Cars"],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   Post(
       "Kai",
@@ -43,7 +43,7 @@ final feed1 = [
       "https://www.ingame.de/bilder/2022/11/30/91947994/30402349-kai-pflaume-bei-den-elevator-boys-2uaMmeCHieec.jpg",
       ["Lifestyle","Beauty"],
       13833,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "POPULAR"),
   Post(
       "Robert",
@@ -52,7 +52,7 @@ final feed1 = [
       "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
       ["Tech"],
       52,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   Post(
       "Markus",
@@ -61,7 +61,7 @@ final feed1 = [
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Sports","Lifestyle"],
       167,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   Post(
       "Havertz",
@@ -70,7 +70,7 @@ final feed1 = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
       ["Sports", "Celebrity"],
       21341,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "POPULAR"),
   Post(
       "Randy",
@@ -79,7 +79,7 @@ final feed1 = [
       "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Sports"],
       134,
-      ["Music"],
+      ["Sports", "Celebrity", "Tech"],
       "TAGS"),
   null,
   Post(
@@ -89,7 +89,7 @@ final feed1 = [
       "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Landscapes", "Lifestyle"],
       2978,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "FRIENDS"),
   Post(
       "Marc",
@@ -98,7 +98,7 @@ final feed1 = [
       "https://upload.wikimedia.org/wikipedia/commons/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg",
       ["Celebrity"],
       313446,
-      [""],
+      ["Sports", "Celebrity", "Tech"],
       "POPULAR"),
 ];
 
@@ -110,7 +110,7 @@ final feed2 = [
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Cars"],
       167,
-      [""],
+      ["Cars", "Gaming"],
       "TAGS"),
   Post(
       "Havertz",
@@ -119,8 +119,8 @@ final feed2 = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg/640px-2019-06-11_Fu%C3%9Fball%2C_M%C3%A4nner%2C_L%C3%A4nderspiel%2C_Deutschland-Estland_StP_2059_LR10_by_Stepro.jpg",
       ["Gaming", "Celebrity"],
       21341,
-      [""],
-      "POPULAR"),
+      ["Cars", "Gaming"],
+      "TAGS"),
   Post(
       "Robert",
       DateTime(2023, 5, 20, 9, 00, 00),
@@ -128,7 +128,7 @@ final feed2 = [
       "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=800",
       ["Cars"],
       52,
-      [""],
+      ["Cars", "Gaming"],
       "TAGS"),
   Post(
       "Randy",
@@ -137,7 +137,7 @@ final feed2 = [
       "https://images.pexels.com/photos/1485031/pexels-photo-1485031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Gaming"],
       134,
-      ["Music"],
+      ["Cars", "Gaming"],
       "TAGS"),
   Post(
       "Rosa",
@@ -146,8 +146,8 @@ final feed2 = [
       "https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ["Beauty", "Lifestyle"],
       2978,
-      [""],
-      "FRIENDS"),
+      ["Cars", "Gaming"],
+      "RANDOM"),
 ];
 
 class FeedState extends State<SliderExample> {
