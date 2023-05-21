@@ -114,6 +114,7 @@ class SliderState extends State<SliderExample> {
     Tag("Tech", 1),
   ];
 
+
   // List<Color> backgroundColor = [Colors.orange, const Color(0xFFff841f), const Color(0xFFff6f32), const Color(0xFFff5944), const Color(0xFFff4255), const Color(0xFFff2a65), const Color(0xFFf60e76), const Color(0xFFe70087), const Color(0xFFd30096), const Color(0xFFba16a4), Colors.purple];
 
   labelSwitch(num sliderValue) {
