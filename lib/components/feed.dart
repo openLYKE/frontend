@@ -7,6 +7,35 @@ import 'package:intl/intl.dart';
 class Feed extends StatelessWidget {
   const Feed({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        colorSchemeSeed: const Color(0xff6750a4),
+        useMaterial3: true,
+      ),
+      home: const SliderExample(),
+    );
+  }
+}
+
+class SliderExample extends StatefulWidget {
+  const SliderExample({super.key});
+
+  @override
+  State<SliderExample> createState() => FeedState();
+}
+
+class FeedState extends State<SliderExample> {
+  Future<void> update() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+
+    setState(() {
+
+    });
+    return Future.delayed(const Duration(seconds: 0));
+  }
   Widget getBottomSheetText(int index) {
     if (index % 2 == 0) {
       return const Text(
@@ -127,244 +156,252 @@ class Feed extends StatelessWidget {
                 icon: const Icon(Icons.settings))
           ],
         ),
-        body: ListView.builder(
-          itemCount: feed.length,
-          itemBuilder: (BuildContext context, int index) {
-            return (feed[index] == null)
-                ? SizedBox(
-                    height: 280,
-                    width: 200,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-                        child: Column(
-                          children: [
-                            const Text("Most viewed tags:",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold)),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: StackedBarChart(data: [
-                                TagData(
-                                    'Sports', 0.45, Colors.black),
-                                TagData('Tech', 0.3, Colors.red),
-                                TagData('Cars', 0.2, Colors.green),
-                                TagData('Others', 0.05, Colors.lightBlue)
-                              ]),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 16.0, vertical: 8),
-                              child: Text(
-                                  "You have consumed a lot of content from the following tags. Blacklist them to see less of them in your feed."),
-                            ),
-                            Wrap(
-                              runSpacing: 3,
-                              spacing: 8,
-                              children: [
-                                ElevatedButton.icon(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.block),
-                                  label: const Text("Sports"),
-                                ),
-                                ElevatedButton.icon(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.block),
-                                  label: const Text("Tech"),
-                                ),
-                                ElevatedButton.icon(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.block),
-                                  label: const Text("Cars"),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+        body: RefreshIndicator (
+          onRefresh: update,
+          child: buildListView(feed, colorMap, format, recommendationDescription))
+        );
+
+  }
+
+  ListView buildListView(List<Post?> feed, Map<String, Color> colorMap, DateFormat format, Map<String, String> recommendationDescription) {
+    return ListView.builder(
+        itemCount: feed.length,
+        itemBuilder: (BuildContext context, int index) {
+          return (feed[index] == null)
+              ? SizedBox(
+                  height: 280,
+                  width: 200,
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+                      child: Column(
+                        children: [
+                          const Text("Most viewed tags:",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: StackedBarChart(data: [
+                              TagData(
+                                  'Sports', 0.45, Colors.black),
+                              TagData('Tech', 0.3, Colors.red),
+                              TagData('Cars', 0.2, Colors.green),
+                              TagData('Others', 0.05, Colors.lightBlue)
+                            ]),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 8),
+                            child: Text(
+                                "You have consumed a lot of content from the following tags. Blacklist them to see less of them in your feed."),
+                          ),
+                          Wrap(
+                            runSpacing: 3,
+                            spacing: 8,
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.block),
+                                label: const Text("Sports"),
+                              ),
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.block),
+                                label: const Text("Tech"),
+                              ),
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.block),
+                                label: const Text("Cars"),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ))
-                : Card(
-                    margin: const EdgeInsets.all(8),
-                    color: colorMap[feed[index]!.recommendedReason],
-                    child: Column(children: [
-                      Card(
-                          margin: const EdgeInsets.only(top: 6),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 0, horizontal: 8.0),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ListTile(
-                                    contentPadding: const EdgeInsets.all(0),
-                                    leading: CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          (feed[index]!.profileImageUrl)
-                                              .toString()),
-                                    ),
-                                    title: Text(feed[index]!.username),
-                                    subtitle: Text(format
-                                        .format(feed[index]!.date)
-                                        .toString()),
-                                    trailing: IconButton(
-                                        onPressed: () {
-                                          showModalBottomSheet<dynamic>(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return SizedBox(
-                                                  height: feed[index]!
-                                                              .recommendedReason !=
-                                                          "TAGS"
-                                                      ? 150
-                                                      : 500,
-                                                  child: ListView(children: [
-                                                    const ListTile(
-                                                      title: Text(
-                                                          "Why do I see this post?",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 20)),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                              top: 10,
-                                                              bottom: 0,
-                                                              left: 20,
-                                                              right: 20),
-                                                    ),
-                                                    Divider(
-                                                      color: colorMap[feed[index]!.recommendedReason],
-                                                      thickness: 3,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 20),
-                                                      child: feed[index]!
-                                                                  .recommendedReason !=
-                                                              "TAGS"
-                                                          ? Text(recommendationDescription[
-                                                              feed[index]!
-                                                                  .recommendedReason]!, style: TextStyle(fontSize: 16))
-                                                          : const Column(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                  Text(
-                                                                    "The Algorithm",
+                    ),
+                  ))
+              : Card(
+                  margin: const EdgeInsets.all(8),
+                  color: colorMap[feed[index]!.recommendedReason],
+                  child: Column(children: [
+                    Card(
+                        margin: const EdgeInsets.only(top: 6),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 0, horizontal: 8.0),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  contentPadding: const EdgeInsets.all(0),
+                                  leading: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        (feed[index]!.profileImageUrl)
+                                            .toString()),
+                                  ),
+                                  title: Text(feed[index]!.username),
+                                  subtitle: Text(format
+                                      .format(feed[index]!.date)
+                                      .toString()),
+                                  trailing: IconButton(
+                                      onPressed: () {
+                                        showModalBottomSheet<dynamic>(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return SizedBox(
+                                                height: feed[index]!
+                                                            .recommendedReason !=
+                                                        "TAGS"
+                                                    ? 150
+                                                    : 500,
+                                                child: ListView(children: [
+                                                  const ListTile(
+                                                    title: Text(
+                                                        "Why do I see this post?",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold,
+                                                            fontSize: 20)),
+                                                    contentPadding:
+                                                        EdgeInsets.only(
+                                                            top: 10,
+                                                            bottom: 0,
+                                                            left: 20,
+                                                            right: 20),
+                                                  ),
+                                                  Divider(
+                                                    color: colorMap[feed[index]!.recommendedReason],
+                                                    thickness: 3,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 20),
+                                                    child: feed[index]!
+                                                                .recommendedReason !=
+                                                            "TAGS"
+                                                        ? Text(recommendationDescription[
+                                                            feed[index]!
+                                                                .recommendedReason]!, style: TextStyle(fontSize: 16))
+                                                        : const Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                                Text(
+                                                                  "The Algorithm",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight.bold),
+                                                                ),
+                                                                Text(
+                                                                    "1. The number of likes \n"
+                                                                    "2. The number of comments\n"
+                                                                    "3. The number of shares\n"
+                                                                    "4. The number of views\n"
+                                                                    "5. The number of reports\n"
+                                                                    "6. The number of times the post was hidden"),
+                                                                Text(
+                                                                    "Tags of this post:",
                                                                     style: TextStyle(
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
-                                                                            FontWeight.bold),
-                                                                  ),
-                                                                  Text(
-                                                                      "1. The number of likes \n"
-                                                                      "2. The number of comments\n"
-                                                                      "3. The number of shares\n"
-                                                                      "4. The number of views\n"
-                                                                      "5. The number of reports\n"
-                                                                      "6. The number of times the post was hidden"),
-                                                                  Text(
-                                                                      "Tags of this post:",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              16,
-                                                                          fontWeight:
-                                                                              FontWeight.bold)),
-                                                                  TagChips(
-                                                                      tags: [
-                                                                        "#tags1",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2",
-                                                                        "#tags2"
-                                                                      ])
-                                                                ]),
-                                                    ),
-                                                  ]));
-                                            },
-                                          );
-                                        },
-                                        icon: const Icon(Icons.info_outline)),
-                                  ),
-                                  ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                          image: NetworkImage(
-                                              feed[index]!.imageURl))),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Row(
-                                        children: [
-                                          const IconButton(
-                                              onPressed: null,
-                                              icon:
-                                                  Icon(Icons.favorite_border)),
-                                          Text(
-                                            feed[index]!.likes.toString()
-                                          ),
-                                        ],
-                                      ),
-                                      const ButtonBar(children: [
-                                        IconButton(
+                                                                            FontWeight.bold)),
+                                                                TagChips(
+                                                                    tags: [
+                                                                      "#tags1",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2",
+                                                                      "#tags2"
+                                                                    ])
+                                                              ]),
+                                                  ),
+                                                ]));
+                                          },
+                                        );
+                                      },
+                                      icon: const Icon(Icons.info_outline)),
+                                ),
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    child: Image(
+                                        image: NetworkImage(
+                                            feed[index]!.imageURl))),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Row(
+                                      children: [
+                                        const IconButton(
                                             onPressed: null,
-                                            icon: Icon(Icons.share)),
-                                        IconButton(
-                                            onPressed: null,
-                                            icon: Icon(Icons.turned_in_not))
-                                      ])
-                                    ],
-                                  )
-                                ]),
-                          ))
-                    ]));
-          },
-        ));
+                                            icon:
+                                                Icon(Icons.favorite_border)),
+                                        Text(
+                                          feed[index]!.likes.toString()
+                                        ),
+                                      ],
+                                    ),
+                                    const ButtonBar(children: [
+                                      IconButton(
+                                          onPressed: null,
+                                          icon: Icon(Icons.share)),
+                                      IconButton(
+                                          onPressed: null,
+                                          icon: Icon(Icons.turned_in_not))
+                                    ])
+                                  ],
+                                )
+                              ]),
+                        ))
+                  ]));
+        },
+      );
   }
 }
 
